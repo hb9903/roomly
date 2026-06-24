@@ -1,0 +1,25 @@
+.header-wrap{
+    width: auto;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    background-color: #FDF7F3;
+    padding: 3rem 2rem;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+nav{
+    display: flex;
+}
+.gnb{
+    display: flex;
+}
+.gnb>li>a{
+    padding: 1.5rem 0.5rem;
+}
+.lnb{
+    display: flex;
+}
