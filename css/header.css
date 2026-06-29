@@ -1,25 +1,148 @@
+header{
+    position: relative;
+    z-index: 1000;
+}
+
+header::before{
+    /* 클로즈 */
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:85px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(248,244,239,1) 0%,
+        rgba(248,244,239,0) 100%
+    );
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    pointer-events:none;
+    z-index:0;
+}
+
+header::after{
+    /* 오픈 */
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:500px;
+
+    background:#FDF7F3;
+    opacity:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    transition:opacity .35s ease;
+}
+
+header.active::after{
+    opacity:1;
+}
+
+.header-wrap,
+.mega-menu{
+    position:relative;
+    z-index:1;
+}
 .header-wrap{
     width: auto;
-    height: 500px;
+    height: 85px;
     display: flex;
     justify-content: space-between;
-    align-items: top;
-    background-color: #FDF7F3;
-    padding: 3rem 2rem;
+    align-items:center;
+    padding: 1rem 2rem;
+    z-index: 1;
+    position: relative;
 }
-.logo{
-    width: 100px;
-    height: 100px;
+.logo a{
+    width: 100%;
 }
 nav{
     display: flex;
+    position: relative;
+}
+nav::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    opacity: 0;
+    transition: .3s;
+}
+header.active nav::after{
+    opacity: 1;
 }
 .gnb{
     display: flex;
 }
+.gnb>li{
+    position: relative;
+}
 .gnb>li>a{
-    padding: 1.5rem 0.5rem;
+    display: block;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Pretendard', sans-serif;
+    line-height: var(--text-line-height);
+    font-size: 18px;
+    font-weight: 300;
+}
+.gnb>li::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: black;
+    transform: translateX(-50%);
+    transition: .3s;
+}
+.gnb>li.header-active::after{
+    width: 100%;
 }
 .lnb{
     display: flex;
+    gap: 1rem;
+}
+.mega-menu{
+    width: 100%;
+    height: 0;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    background: transparent;
+    transition: height .55s ease;
+}
+
+.mega-menu.active{
+    height: 415px;
+}
+.mega-list{
+    display: flex;
+    gap: 3rem;
+}
+.mega-list>li{
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.mega-list>li.mega-active{
+    display: flex;
+}
+.mega-img{
+    width: 823px;
+    height: 386px;
+    background-color: black;
 }
